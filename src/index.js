@@ -25,8 +25,6 @@ Connection();
 
 // Routes
 
-app.use('/uploads', express.static('src/uploads'));
-
 app.use('/api/v1/product', ProductRouter);
 
 app.use('*', (req, res, next) => {

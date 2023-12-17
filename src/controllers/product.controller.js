@@ -1,4 +1,3 @@
-const { StatusCodes } = require('http-status-codes');
 const ProductService = require('../services/product.service');
 
 class ProductController {

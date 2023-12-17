@@ -42,10 +42,7 @@ class ProductService {
 
     async createProduct(req) {
         try {
-            const { filename } = req.file;
-            const url = `${req.protocol}://${req.get('host')}/uploads/${filename}`;
             const data = {
-                image: url,
                 ...req.body,
             };
             const newProduct = new ProductModel(data);
@@ -65,9 +62,6 @@ class ProductService {
     async deleteProduct(req) {
         try {
             const { pid } = req.params;
-            const findImage = await ProductModel.findById(pid).select('image');
-            if (!findImage) throw createHttpError(404, 'Can not find product');
-            fs.unlinkSync(`src/uploads/${findImage.image.split('/')[4]}`);
             const deleteProduct = await ProductModel.findByIdAndDelete(pid);
             if (!deleteProduct) throw createHttpError(404, 'Product is not delete because is not exists');
             return {
