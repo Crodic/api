@@ -26,10 +26,6 @@ const ProductSchema = new Schema(
             max: [5, 'Rate product is max value 5'],
             min: [0, 'Rate product is min value 0'],
         },
-        image: {
-            type: String,
-            required: [true, 'Image product is required'],
-        },
     },
     {
         timestamps: true,
